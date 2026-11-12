@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shaboquette — Bespoke Coquette Floral Atelier</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Romantic Serif, Script & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blush: {
+              50: '#FFFDF9',
+              100: '#FFF0F5',
+              200: '#FADADD',
+              300: '#F4C2C2',
+              400: '#E89EB0',
+              500: '#D4728C',
+              600: '#B54E69',
+              700: '#8E354D',
+              800: '#6B2437',
+            },
+            cream: '#FFFDF9',
+            pearl: '#F8F4F0',
+            roseGold: '#C99696',
+          },
+          fontFamily: {
+            script: ['"Great Vibes"', 'cursive'],
+            serif: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          },
+          boxShadow: {
+            'coquette': '0 10px 35px -5px rgba(212, 114, 140, 0.16), 0 4px 12px -2px rgba(212, 114, 140, 0.08)',
+            'polaroid': '0 12px 28px rgba(107, 36, 55, 0.15), 0 2px 6px rgba(0, 0, 0, 0.06)',
+            'pearl': '0 2px 6px rgba(181, 78, 105, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.9)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Coquette Gingham & Lace Subtle Background */
+    body {
+      background-color: #FFF5F8;
+      background-image:
+        radial-gradient(#FADADD 1.2px, transparent 1.2px),
+        linear-gradient(90deg, rgba(250, 218, 221, 0.22) 50%, transparent 50%),
+        linear-gradient(rgba(250, 218, 221, 0.22) 50%, transparent 50%);
+      background-size: 28px 28px, 40px 40px, 40px 40px;
+      color: #5C2836;
+      overflow-x: hidden;
+    }
+
+    /* Lace Scallop Border Effect */
+    .lace-card {
+      background: #FFFDF9;
+      border: 1.5px solid #F4C2C2;
+      position: relative;
+    }
+
+    .lace-card::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px dashed #E89EB0;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    /* Vintage Stationery Scallop Edge */
+    .stationery-card {
+      background: radial-gradient(circle at 0 0, transparent 0, transparent 4px, #FFFDF9 5px);
+      background-color: #FFFDF9;
+      background-image: radial-gradient(#F4C2C2 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      border: 2px solid #F4C2C2;
+      box-shadow: 0 14px 30px rgba(181, 78, 105, 0.14);
+    }
+
+    /* Floating Gentle Animation for Flowers */
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(-0.8deg) translateY(0px); }
+      50% { transform: rotate(0.8deg) translateY(-3px); }
+    }
+
+    .bouquet-float {
+      animation: gentleSway 6s ease-in-out infinite;
+    }
+
+    @keyframes popBloom {
+      0% { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+      70% { transform: scale(1.08) rotate(3deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .bloom-enter {
+      animation: popBloom 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Pearl Divider */
+    .pearl-string {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .pearl-bead {
+      width: 7px;
+      height: 7px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 30%, #FFFFFF, #F5E6E8 65%, #D9B8C0 100%);
+      box-shadow: 0 1px 3px rgba(142, 53, 77, 0.25);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF0F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #E89EB0;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D4728C;
+    }
+
+    /* Ribbon Pill Button */
+    .btn-coquette {
+      background: linear-gradient(135deg, #FADADD 0%, #F4C2C2 100%);
+      border: 1.5px solid #E89EB0;
+      color: #6B2437;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-coquette:hover {
+      background: linear-gradient(135deg, #F4C2C2 0%, #E89EB0 100%);
+      color: #FFFDF9;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(212, 114, 140, 0.28);
+    }
+    .btn-coquette-primary {
+      background: linear-gradient(135deg, #D4728C 0%, #B54E69 100%);
+      border: 1.5px solid #9F3E58;
+      color: #FFFDF9;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-coquette-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1.5px);
+      box-shadow: 0 8px 24px rgba(181, 78, 105, 0.35);
+    }
+
+    /* Toast Notification */
+    #toast-box {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-blush-200 selection:text-blush-800">
+
+  <!-- Toast Message Box (Replaces alert) -->
+  <div id="toast-box" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4">
+    <div class="bg-blush-800/95 backdrop-blur-md text-cream px-5 py-3 rounded-full shadow-xl border border-blush-300 flex items-center gap-2.5 text-sm font-medium">
+      <span id="toast-icon">🎀</span>
+      <span id="toast-text">Notification</span>
+    </div>
+  </div>
+
+  <!-- Top Delicate Ribbon Banner -->
+  <div class="w-full bg-gradient-to-r from-blush-200 via-blush-100 to-blush-200 border-b border-blush-300/70 py-1.5 px-4 text-center">
+    <p class="text-xs sm:text-sm font-serif italic tracking-wider text-blush-700 flex items-center justify-center gap-2">
+      <span>୨୧</span>
+      <span>Handcrafted digital florals, silk ribbons & love notes for someone cherished</span>
+      <span>୨୧</span>
+    </p>
+  </div>
+
+  <!-- HERO / HOMEPAGE HEADER -->
+  <header id="hero-header" class="max-w-6xl mx-auto pt-8 pb-6 px-4 sm:px-6 text-center relative">
+    <!-- Decorative Corner Bows -->
+    <div class="hidden md:block absolute top-8 left-8 opacity-80 pointer-events-none" aria-hidden="true">
+      <svg width="76" height="54" viewBox="0 0 100 70" fill="none">
+        <path d="M50 35C34 15 10 12 12 32C14 48 36 42 50 35Z" fill="#FADADD" stroke="#D4728C" stroke-width="2"/>
+        <path d="M50 35C66 15 90 12 88 32C86 48 64 42 50 35Z" fill="#FADADD" stroke="#D4728C" stroke-width="2"/>
+        <path d="M47 38L30 64L38 61L42 67L50 40" fill="#F4C2C2" stroke="#D4728C" stroke-width="1.8"/>
+        <path d="M53 38L70 64L62 61L58 67L50 40" fill="#F4C2C2" stroke="#D4728C" stroke-width="1.8"/>
+        <rect x="44" y="29" width="12" height="12" rx="5" fill="#F4C2C2" stroke="#D4728C" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="hidden md:block absolute top-8 right-8 opacity-80 pointer-events-none scale-x-[-1]" aria-hidden="true">
+      <svg width="76" height="54" viewBox="0 0 100 70" fill="none">
+        <path d="M50 35C34 15 10 12 12 32C14 48 36 42 50 35Z" fill="#FADADD" stroke="#D4728C" stroke-width="2"/>
+        <path d="M50 35C66 15 90 12 88 32C86 48 64 42 50 35Z" fill="#FADADD" stroke="#D4728C" stroke-width="2"/>
+        <path d="M47 38L30 64L38 61L42 67L50 40" fill="#F4C2C2" stroke="#D4728C" stroke-width="1.8"/>
+        <path d="M53 38L70 64L62 61L58 67L50 40" fill="#F4C2C2" stroke="#D4728C" stroke-width="1.8"/>
+        <rect x="44" y="29" width="12" height="12" rx="5" fill="#F4C2C2" stroke="#D4728C" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <!-- Brand Pill -->
+    <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cream border border-blush-300 shadow-sm mb-3">
+      <span class="text-blush-500 text-xs">❀</span>
+      <span class="text-[11px] uppercase tracking-[0.22em] font-semibold text-blush-600">Bespoke Floral Atelier</span>
+      <span class="text-blush-500 text-xs">❀</span>
+    </div>
+
+    <!-- Prominent Brand Name: shaboquette -->
+    <h1 class="font-script text-6xl sm:text-7xl md:text-8xl text-blush-700 drop-shadow-sm leading-none tracking-normal select-none">
+      shaboquette
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="mt-2 font-serif italic text-lg sm:text-xl md:text-2xl text-blush-600 max-w-xl mx-auto">
+      Craft your bespoke coquette bouquet, tie a silk ribbon, attach a cherished memory &amp; dedicate a serenade.
+    </p>
+
+    <!-- Pearl Divider -->
+    <div class="pearl-string my-4" aria-hidden="true">
+      <span class="h-[1px] w-14 bg-gradient-to-r from-transparent to-blush-300"></span>
+      <span class="pearl-bead"></span>
+      <span class="pearl-bead"></span>
+      <span class="text-blush-500 text-sm px-1">୨୧</span>
+      <span class="pearl-bead"></span>
+      <span class="pearl-bead"></span>
+      <span class="h-[1px] w-14 bg-gradient-to-l from-transparent to-blush-300"></span>
+    </div>
+
+    <!-- Action Bar (Switches between Studio Mode & Keepsake Presentation Mode) -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+      <a href="#atelier-workspace" id="btn-start-creating" class="btn-coquette px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-sm">
+        <span>🌷</span>
+        <span>Start Creating</span>
+      </a>
+      <button id="btn-toggle-keepsake" type="button" class="btn-coquette-primary px-6 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-md">
+        <span id="keepsake-btn-icon">🎀</span>
+        <span id="keepsake-btn-label">Wrap &amp; Present Bouquet</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <main id="atelier-workspace" class="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+    <div id="workspace-grid" class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+
+      <!-- LEFT COLUMN: BOUQUET STAGE & KEEPSAKE DISPLAY (7 cols in studio, centered full in keepsake mode) -->
+      <section id="stage-column" class="lg:col-span-7 flex flex-col items-center">
+
+        <!-- Interactive Bouquet Canvas Card -->
+        <div class="w-full lace-card rounded-3xl p-4 sm:p-6 shadow-coquette overflow-hidden">
+          <!-- Stage Top Header -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-2 border-b border-blush-200/80">
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-blush-400"></span>
+              <h2 class="font-serif font-semibold text-lg sm:text-xl text-blush-700">
+                Your Bespoke Arrangement
+              </h2>
+              <span id="bloom-counter" class="text-xs bg-blush-100 text-blush-600 border border-blush-300 px-2.5 py-0.5 rounded-full font-medium">
+                7 blooms
+              </span>
+            </div>
+
+            <!-- Quick Stage Controls (Hidden in Keepsake Mode) -->
+            <div id="stage-quick-controls" class="flex items-center gap-1.5">
+              <button type="button" id="btn-shuffle-bouquet" title="Shuffle bloom arrangement" class="px-3 py-1.5 rounded-full text-xs font-medium bg-blush-100 hover:bg-blush-200 text-blush-700 border border-blush-300 transition flex items-center gap-1">
+                <span>✨</span>
+                <span>Shuffle</span>
+              </button>
+              <button type="button" id="btn-undo-bloom" title="Remove last bloom" class="px-3 py-1.5 rounded-full text-xs font-medium bg-blush-100 hover:bg-blush-200 text-blush-700 border border-blush-300 transition flex items-center gap-1">
+                <span>↩</span>
+                <span>Undo</span>
+              </button>
+              <button type="button" id="btn-clear-bouquet" title="Clear all blooms" class="px-3 py-1.5 rounded-full text-xs font-medium bg-cream hover:bg-red-50 text-blush-600 hover:text-red-600 border border-blush-300 transition">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual Bouquet & Polaroid Stage -->
+          <div class="relative w-full min-h-[450px] sm:min-h-[520px] rounded-2xl bg-gradient-to-b from-blush-100/70 via-cream to-blush-100/60 border border-blush-200/70 flex items-center justify-center overflow-hidden p-2 sm:p-4">
+
+            <!-- Soft Halo Glow Behind Bouquet -->
+            <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-blush-200/45 blur-3xl pointer-events-none"></div>
+
+            <!-- Decorative Floating Pearls & Sparkles -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-65" viewBox="0 0 600 540" fill="none">
+              <circle cx="85" cy="90" r="3" fill="#E89EB0"/>
+              <circle cx="515" cy="110" r="3.5" fill="#E89EB0"/>
+              <circle cx="65" cy="310" r="2.5" fill="#D4728C"/>
+              <circle cx="535" cy="295" r="3" fill="#D4728C"/>
+              <path d="M110 150L113 158L121 161L113 164L110 172L107 164L99 161L107 158L110 150Z" fill="#F4C2C2"/>
+              <path d="M490 175L492.5 182L499.5 184.5L492.5 187L490 194L487.5 187L480.5 184.5L487.5 182L490 175Z" fill="#F4C2C2"/>
+            </svg>
+
+            <!-- MAIN BOUQUET ILLUSTRATION SVG -->
+            <div class="relative z-10 w-full max-w-[440px] bouquet-float select-none">
+              <svg id="bouquet-svg" viewBox="0 0 460 540" class="w-full h-auto drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Wrapper Patterns -->
+                  <pattern id="pattern-gingham" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect width="20" height="20" fill="#FFF7FA"/>
+                    <rect width="10" height="10" fill="#FADADD" fill-opacity="0.65"/>
+                    <rect x="10" y="10" width="10" height="10" fill="#FADADD" fill-opacity="0.65"/>
+                  </pattern>
+
+                  <pattern id="pattern-lace" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <rect width="24" height="24" fill="#FFFDF9"/>
+                    <circle cx="12" cy="12" r="8" fill="none" stroke="#EAD7DC" stroke-width="1" stroke-dasharray="2 2"/>
+                    <circle cx="12" cy="12" r="2.5" fill="#F4C2C2" fill-opacity="0.6"/>
+                    <circle cx="0" cy="0" r="4" fill="none" stroke="#EAD7DC" stroke-width="0.8"/>
+                    <circle cx="24" cy="0" r="4" fill="none" stroke="#EAD7DC" stroke-width="0.8"/>
+                    <circle cx="0" cy="24" r="4" fill="none" stroke="#EAD7DC" stroke-width="0.8"/>
+                    <circle cx="24" cy="24" r="4" fill="none" stroke="#EAD7DC" stroke-width="0.8"/>
+                  </pattern>
+
+                  <pattern id="pattern-newsprint" width="60" height="40" patternUnits="userSpaceOnUse">
+                    <rect width="60" height="40" fill="#F7EFE5"/>
+                    <line x1="6" y1="8" x2="54" y2="8" stroke="#C7B7A7" stroke-width="1.2"/>
+                    <line x1="6" y1="14" x2="48" y2="14" stroke="#D5C7B8" stroke-width="0.9"/>
+                    <line x1="6" y1="20" x2="52" y2="20" stroke="#D5C7B8" stroke-width="0.9"/>
+                    <line x1="6" y1="26" x2="40" y2="26" stroke="#D5C7B8" stroke-width="0.9"/>
+                    <line x1="6" y1="32" x2="50" y2="32" stroke="#C7B7A7" stroke-width="0.9"/>
+                  </pattern>
+
+                  <linearGradient id="grad-kraft" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#F6D5DF"/>
+                    <stop offset="50%" stop-color="#EBC2CF"/>
+                    <stop offset="100%" stop-color="#DFA8B9"/>
+                  </linearGradient>
+
+                  <linearGradient id="grad-organza" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.88"/>
+                    <stop offset="50%" stop-color="#FFE6F0" stop-opacity="0.78"/>
+                    <stop offset="100%" stop-color="#F8C8DC" stop-opacity="0.85"/>
+                  </linearGradient>
+
+                  <!-- Soft Drop Shadow Filter -->
+                  <filter id="soft-shadow" x="-15%" y="-15%" width="130%" height="130%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#8E354D" flood-opacity="0.16"/>
+                  </filter>
+                </defs>
+
+                <!-- LAYER 1: Back Wrapper Cone -->
+                <g id="wrapper-back" filter="url(#soft-shadow)">
+                  <!-- Left & Right Back Paper Folds -->
+                  <path id="wrap-back-left" d="M230 395 L82 185 Q125 140 185 162 L230 395 Z" fill="url(#grad-kraft)" stroke="#D49AA9" stroke-width="1.5"/>
+                  <path id="wrap-back-right" d="M230 395 L378 185 Q335 140 275 162 L230 395 Z" fill="url(#grad-kraft)" stroke="#D49AA9" stroke-width="1.5"/>
+                  <path id="wrap-back-center" d="M230 395 L155 152 Q230 125 305 152 L230 395 Z" fill="url(#grad-kraft)" stroke="#D49AA9" stroke-width="1.5"/>
+                </g>
+
+                <!-- LAYER 2: Stems & Lush Greenery Foliage -->
+                <g id="foliage-and-stems">
+                  <!-- Stems extending down below ribbon -->
+                  <g stroke="#6B8E67" stroke-linecap="round">
+                    <path d="M210 260 Q222 365 212 492" stroke-width="4.5" fill="none"/>
+                    <path d="M230 250 Q230 370 230 502" stroke-width="5" fill="none"/>
+                    <path d="M250 260 Q238 365 248 492" stroke-width="4.5" fill="none"/>
+                    <path d="M195 275 Q218 370 220 486" stroke-width="3.8" fill="none"/>
+                    <path d="M265 275 Q242 370 240 486" stroke-width="3.8" fill="none"/>
+                  </g>
+
+                  <!-- Eucalyptus & Fern Leaves -->
+                  <g id="greenery-layer">
+                    <!-- Left Foliage -->
+                    <path d="M170 245 C125 220, 100 185, 118 168 C136 152, 168 195, 178 242 Z" fill="#8FB38B" stroke="#6E946A" stroke-width="1.2"/>
+                    <path d="M150 275 C105 268, 82 242, 95 222 C108 202, 146 232, 162 272 Z" fill="#A3C49F" stroke="#6E946A" stroke-width="1.2"/>
+                    <!-- Right Foliage -->
+                    <path d="M290 245 C335 220, 360 185, 342 168 C324 152, 292 195, 282 242 Z" fill="#8FB38B" stroke="#6E946A" stroke-width="1.2"/>
+                    <path d="M310 275 C355 268, 378 242, 365 222 C352 202, 314 232, 298 272 Z" fill="#A3C49F" stroke="#6E946A" stroke-width="1.2"/>
+                    <!-- Top Foliage -->
+                    <path d="M210 190 C195 145, 205 115, 224 118 C242 122, 232 162, 220 192 Z" fill="#98BA94" stroke="#6E946A" stroke-width="1.2"/>
+                    <path d="M250 190 C265 145, 255 115, 236 118 C218 122, 228 162, 240 192 Z" fill="#8FB38B" stroke="#6E946A" stroke-width="1.2"/>
+                  </g>
+                </g>
+
+                <!-- LAYER 3: Dynamic Blooms Container (Populated via JS) -->
+                <g id="blooms-layer"></g>
+
+                <!-- LAYER 4: Front Wrapper Fold -->
+                <g id="wrapper-front" filter="url(#soft-shadow)">
+                  <!-- Left Front Flap -->
+                  <path id="wrap-front-left" d="M230 402 L112 278 Q155 315 230 335 Z" fill="url(#grad-kraft)" stroke="#D49AA9" stroke-width="1.5"/>
+                  <!-- Right Front Flap -->
+                  <path id="wrap-front-right" d="M230 402 L348 278 Q305 315 230 335 Z" fill="url(#grad-kraft)" stroke="#D49AA9" stroke-width="1.5"/>
+                  <!-- Lower Cone Collar -->
+                  <path id="wrap-front-cone" d="M172 325 Q230 352 288 325 L254 422 Q230 432 206 422 Z" fill="url(#grad-kraft)" stroke="#D49AA9" stroke-width="1.5"/>
+                  <!-- Delicate Lace Trim on Front Wrapper Edge -->
+                  <path d="M115 280 Q172 332 230 336 Q288 332 345 280" fill="none" stroke="#FFFDF9" stroke-width="3" stroke-dasharray="4 4" stroke-linecap="round"/>
+                </g>
+
+                <!-- LAYER 5: Coquette Silk Ribbon & Bow (Dynamically Styled via JS) -->
+                <g id="ribbon-layer" filter="url(#soft-shadow)"></g>
+              </svg>
+
+              <!-- Empty State Prompt (Shown if 0 blooms) -->
+              <div id="empty-bouquet-msg" class="hidden absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="bg-cream/90 backdrop-blur-sm border border-blush-300 px-5 py-3 rounded-2xl text-center shadow-sm">
+                  <p class="font-serif italic text-blush-700 text-lg">Your bouquet is waiting to bloom...</p>
+                  <p class="text-xs text-blush-500 mt-0.5">Tap any flower on the right to add blooms!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- POLAROID PHOTO ATTACHMENT (Tucked beside/overlapping corner of bouquet) -->
+            <div id="polaroid-attachment" class="absolute bottom-3 right-3 sm:bottom-5 sm:right-5 z-20 w-32 sm:w-40 bg-cream p-2 pb-4 rounded-sm shadow-polaroid border border-blush-200 transform rotate-3 hover:rotate-0 transition-transform duration-300 cursor-pointer group" title="Attached Polaroid Memory">
+              <!-- Coquette Ribbon Sticker on Corner of Polaroid -->
+              <div class="absolute -top-3 -left-3 z-30 drop-shadow-sm pointer-events-none">
+                <svg width="34" height="24" viewBox="0 0 100 70" fill="none">
+                  <path d="M50 35C34 15 10 12 12 32C14 48 36 42 50 35Z" fill="#F4C2C2" stroke="#B54E69" stroke-width="3"/>
+                  <path d="M50 35C66 15 90 12 88 32C86 48 64 42 50 35Z" fill="#F4C2C2" stroke="#B54E69" stroke-width="3"/>
+                  <rect x="43" y="28" width="14" height="14" rx="5" fill="#D4728C" stroke="#B54E69" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <!-- Photo Frame -->
+              <div class="w-full aspect-square bg-blush-100 overflow-hidden border border-blush-200/80 relative">
+                <img
+                  id="polaroid-img"
+                  src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=500&q=80"
+                  onerror="this.onerror=null;this.src='https://placehold.co/400x400/FADADD/8E354D?text=Our+Sweet+Memory+%F0%9F%8E%80';"
+                  alt="Cherished Polaroid Memory"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Handwritten Polaroid Caption -->
+              <p id="polaroid-caption-display" class="mt-2 text-center font-serif italic text-xs sm:text-sm text-blush-700 truncate px-1">
+                forever &amp; always ♡
+              </p>
+            </div>
+          </div>
+
+          <!-- ATTACHED VINTAGE GIFT NOTE & SPOTIFY SERENADE CARD -->
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+
+            <!-- Vintage Scalloped Gift Card (7 cols) -->
+            <div class="md:col-span-7 stationery-card rounded-2xl p-4 sm:p-5 relative flex flex-col justify-between">
+              <!-- Tiny Top Bow -->
+              <div class="flex items-center justify-between border-b border-blush-200 pb-2 mb-2.5">
+                <span class="font-serif italic text-sm text-blush-600">
+                  Dearest <strong id="card-to-display" class="font-semibold text-blush-800 not-italic">My Sweetest Love</strong>,
+                </span>
+                <span class="text-blush-400 text-sm">୨୧</span>
+              </div>
+
+              <!-- Message Body -->
+              <p id="card-message-display" class="font-serif text-base sm:text-lg leading-relaxed text-blush-800 italic min-h-[72px] whitespace-pre-line">
+                Every petal in this bouquet reminds me of your grace and warmth. Wishing you a day as lovely and enchanting as you are.
+              </p>
+
+              <!-- Sign-off -->
+              <div class="mt-3 pt-2 border-t border-blush-200/70 flex items-center justify-between text-xs sm:text-sm">
+                <span class="text-blush-400 font-serif italic">shaboquette keepsake</span>
+                <span class="font-serif italic text-blush-700">
+                  With all my love, <strong id="card-from-display" class="font-semibold text-blush-800 not-italic">Your Secret Admirer</strong>
+                </span>
+              </div>
+            </div>
+
+            <!-- Dedicated Spotify Serenade Card (5 cols) -->
+            <div class="md:col-span-5 bg-cream border-2 border-blush-300 rounded-2xl p-3.5 shadow-sm flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-blush-600 text-sm">🎵</span>
+                  <span class="font-serif font-semibold text-sm text-blush-700">Dedicated Serenade</span>
+                </div>
+                <span class="text-[10px] uppercase tracking-wider bg-blush-100 text-blush-600 px-2 py-0.5 rounded-full border border-blush-200">Spotify</span>
+              </div>
+
+              <!-- Spotify Embed Container -->
+              <div class="w-full rounded-xl overflow-hidden bg-blush-100 border border-blush-200">
+                <iframe
+                  id="spotify-iframe"
+                  style="border-radius:12px"
+                  src="https://open.spotify.com/embed/track/1dGr1c8CrMLDpV6mPbImSI?utm_source=generator&theme=0"
+                  width="100%"
+                  height="152"
+                  frameBorder="0"
+                  allowfullscreen=""
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Spotify Song Embed">
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Keepsake Mode Footer Actions (Visible in Keepsake Mode) -->
+          <div id="keepsake-footer-bar" class="hidden mt-5 pt-4 border-t border-blush-200 flex flex-wrap items-center justify-between gap-3">
+            <p class="font-serif italic text-sm text-blush-600">
+              Your bespoke <span class="font-semibold">shaboquette</span> arrangement is wrapped &amp; ready to share.
+            </p>
+            <div class="flex items-center gap-2.5">
+              <button type="button" id="btn-share-link" class="btn-coquette-primary px-4 py-2 rounded-full text-xs sm:text-sm font-medium flex items-center gap-1.5">
+                <span>🔗</span>
+                <span>Copy Shareable Link</span>
+              </button>
+              <button type="button" id="btn-copy-keepsake" class="btn-coquette px-4 py-2 rounded-full text-xs sm:text-sm font-medium flex items-center gap-1.5">
+                <span>💌</span>
+                <span>Copy Text Summary</span>
+              </button>
+              <button type="button" id="btn-back-to-edit" class="btn-coquette px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
+                ✎ Edit Bouquet
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: ATELIER CUSTOMIZATION STUDIO (5 cols, hidden in Keepsake Mode) -->
+      <aside id="studio-controls-column" class="lg:col-span-5 space-y-5">
+
+        <!-- Studio Navigation Tabs -->
+        <div class="lace-card rounded-2xl p-2 shadow-sm">
+          <div class="grid grid-cols-4 gap-1.5" role="tablist">
+            <button type="button" data-tab="flowers" class="studio-tab active-tab py-2 px-2 rounded-xl text-xs sm:text-sm font-medium transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-blush-500 text-cream shadow-sm">
+              <span>🌸</span>
+              <span>Blooms</span>
+            </button>
+            <button type="button" data-tab="ribbon" class="studio-tab py-2 px-2 rounded-xl text-xs sm:text-sm font-medium transition flex flex-col sm:flex-row items-center justify-center gap-1 text-blush-700 hover:bg-blush-100">
+              <span>🎀</span>
+              <span>Ribbon</span>
+            </button>
+            <button type="button" data-tab="memory" class="studio-tab py-2 px-2 rounded-xl text-xs sm:text-sm font-medium transition flex flex-col sm:flex-row items-center justify-center gap-1 text-blush-700 hover:bg-blush-100">
+              <span>📸</span>
+              <span>Photo &amp; Note</span>
+            </button>
+            <button type="button" data-tab="spotify" class="studio-tab py-2 px-2 rounded-xl text-xs sm:text-sm font-medium transition flex flex-col sm:flex-row items-center justify-center gap-1 text-blush-700 hover:bg-blush-100">
+              <span>🎶</span>
+              <span>Spotify</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: PICK YOUR BLOOMS -->
+        <div id="panel-flowers" class="studio-panel lace-card rounded-3xl p-5 shadow-coquette">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-serif font-semibold text-xl text-blush-700">1. Choose Your Blooms</h3>
+            <span class="text-xs text-blush-500 italic">Click to add (up to 15)</span>
+          </div>
+          <p class="text-xs text-blush-600 mb-4">
+            Select lush illustrated flowers to layer into your bouquet. Each bloom carries a romantic meaning.
+          </p>
+
+          <!-- Flower Palette Grid -->
+          <div id="flower-palette-grid" class="grid grid-cols-2 sm:grid-cols-2 gap-2.5">
+            <!-- Populated dynamically via JS -->
+          </div>
+
+          <!-- Active Bouquet Composition Chips -->
+          <div class="mt-4 pt-3 border-t border-blush-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-blush-600">Current Stems in Bouquet</span>
+              <span id="stem-limit-label" class="text-xs text-blush-500">7 / 15</span>
+            </div>
+            <div id="active-blooms-chips" class="flex flex-wrap gap-1.5 min-h-[32px]">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: SILK RIBBON & WRAPPER PAPER -->
+        <div id="panel-ribbon" class="studio-panel hidden lace-card rounded-3xl p-5 shadow-coquette space-y-5">
+          <!-- Silk Ribbon Selection -->
+          <div>
+            <h3 class="font-serif font-semibold text-xl text-blush-700 mb-1">2. Tie a Coquette Ribbon</h3>
+            <p class="text-xs text-blush-600 mb-3">Choose a satin, velvet, or pearl-trimmed bow to bind your bouquet.</p>
+            <div id="ribbon-options-grid" class="grid grid-cols-2 gap-2.5">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Wrapper Paper Selection -->
+          <div class="pt-4 border-t border-blush-200">
+            <h4 class="font-serif font-semibold text-lg text-blush-700 mb-1">Bouquet Wrapper Paper</h4>
+            <p class="text-xs text-blush-600 mb-3">Select the delicate paper wrapping cradling your blooms.</p>
+            <div id="wrapper-options-grid" class="grid grid-cols-2 gap-2.5">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: POLAROID PHOTO & LOVE NOTE -->
+        <div id="panel-memory" class="studio-panel hidden lace-card rounded-3xl p-5 shadow-coquette space-y-5">
+          <!-- Polaroid Photo Upload -->
+          <div>
+            <h3 class="font-serif font-semibold text-xl text-blush-700 mb-1">3. Attach a Polaroid Photo</h3>
+            <p class="text-xs text-blush-600 mb-3">Upload a favorite photo to tuck inside the coquette Polaroid frame.</p>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+              <label for="photo-upload-input" class="flex-1 cursor-pointer bg-blush-100 hover:bg-blush-200/80 border-2 border-dashed border-blush-400 rounded-2xl p-3 text-center transition">
+                <span class="block text-sm font-medium text-blush-700">📷 Upload Personal Photo</span>
+                <span class="block text-[11px] text-blush-500 mt-0.5">JPG, PNG, or WEBP</span>
+                <input id="photo-upload-input" type="file" accept="image/*" class="hidden" />
+              </label>
+              <button type="button" id="btn-reset-photo" class="px-3.5 py-2.5 rounded-2xl text-xs font-medium bg-cream border border-blush-300 text-blush-600 hover:bg-blush-100 transition">
+                Reset Default
+              </button>
+            </div>
+
+            <div class="mt-3">
+              <label for="input-polaroid-caption" class="block text-xs font-medium text-blush-700 mb-1">Polaroid Caption</label>
+              <input id="input-polaroid-caption" type="text" maxlength="32" value="forever & always ♡" placeholder="e.g., Paris, Spring '26 ♡" class="w-full px-3.5 py-2 rounded-xl bg-cream border border-blush-300 text-sm text-blush-800 focus:outline-none focus:ring-2 focus:ring-blush-400" />
+            </div>
+          </div>
+
+          <!-- Recipient & Love Note -->
+          <div class="pt-4 border-t border-blush-200 space-y-3">
+            <h4 class="font-serif font-semibold text-lg text-blush-700">Personalize Gift Card</h4>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="input-to-name" class="block text-xs font-medium text-blush-700 mb-1">To (Recipient Name)</label>
+                <input id="input-to-name" type="text" maxlength="36" value="My Sweetest Love" placeholder="Recipient's name..." class="w-full px-3.5 py-2 rounded-xl bg-cream border border-blush-300 text-sm text-blush-800 focus:outline-none focus:ring-2 focus:ring-blush-400" />
+              </div>
+              <div>
+                <label for="input-from-name" class="block text-xs font-medium text-blush-700 mb-1">From (Your Name)</label>
+                <input id="input-from-name" type="text" maxlength="36" value="Your Secret Admirer" placeholder="Your name..." class="w-full px-3.5 py-2 rounded-xl bg-cream border border-blush-300 text-sm text-blush-800 focus:outline-none focus:ring-2 focus:ring-blush-400" />
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label for="input-love-note" class="block text-xs font-medium text-blush-700">Love Note / Message</label>
+                <button type="button" id="btn-inspire-note" class="text-[11px] text-blush-600 hover:text-blush-800 underline font-serif italic">
+                  ✨ Inspire a note
+                </button>
+              </div>
+              <textarea id="input-love-note" rows="3" maxlength="240" placeholder="Write a heartfelt message..." class="w-full px-3.5 py-2 rounded-xl bg-cream border border-blush-300 text-sm text-blush-800 focus:outline-none focus:ring-2 focus:ring-blush-400 resize-none">Every petal in this bouquet reminds me of your grace and warmth. Wishing you a day as lovely and enchanting as you are.</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: SPOTIFY SERENADE SELECTOR -->
+        <div id="panel-spotify" class="studio-panel hidden lace-card rounded-3xl p-5 shadow-coquette space-y-4">
+          <div>
+            <h3 class="font-serif font-semibold text-xl text-blush-700 mb-1">4. Dedicate a Spotify Song</h3>
+            <p class="text-xs text-blush-600">
+              Select a romantic coquette track from our curated playlist or paste any Spotify song link below.
+            </p>
+          </div>
+
+          <!-- Curated Romantic Coquette Tracks -->
+          <div id="spotify-presets-list" class="space-y-2 max-h-64 overflow-y-auto pr-1">
+            <!-- Populated dynamically via JS -->
+          </div>
+
+          <!-- Custom Spotify Track Link Input -->
+          <div class="pt-3 border-t border-blush-200">
+            <label for="input-custom-spotify" class="block text-xs font-medium text-blush-700 mb-1">
+              Or Paste Any Spotify Track URL
+            </label>
+            <div class="flex gap-2">
+              <input id="input-custom-spotify" type="url" placeholder="https://open.spotify.com/track/..." class="flex-1 px-3.5 py-2 rounded-xl bg-cream border border-blush-300 text-xs sm:text-sm text-blush-800 focus:outline-none focus:ring-2 focus:ring-blush-400" />
+              <button type="button" id="btn-load-spotify" class="btn-coquette-primary px-4 py-2 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap">
+                Load Song
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Step Progression Footer -->
+        <div class="flex items-center justify-between px-2">
+          <button type="button" id="btn-prev-step" class="text-xs font-medium text-blush-600 hover:text-blush-800 flex items-center gap-1 py-1.5 px-3 rounded-full bg-cream/80 border border-blush-200">
+            <span>←</span>
+            <span>Previous Step</span>
+          </button>
+          <button type="button" id="btn-next-step" class="text-xs font-medium text-blush-700 hover:text-blush-900 flex items-center gap-1 py-1.5 px-3 rounded-full bg-blush-200/80 border border-blush-300">
+            <span>Next Step</span>
+            <span>→</span>
+          </button>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-blush-200 bg-cream/80 py-6 px-4 text-center">
+    <p class="font-script text-3xl text-blush-600">shaboquette</p>
+    <p class="font-serif italic text-xs sm:text-sm text-blush-500 mt-1">
+      Designed with silk bows, morning dew &amp; timeless romance ୨୧
+    </p>
+  </footer>
+
+  <!-- APPLICATION LOGIC -->
+  <script>
+    (function () {
+      'use strict';
+
+      // =========================================================================
+      // 1. CATALOG DATA: FLOWERS, RIBBONS, WRAPPERS & SPOTIFY TRACKS
+      // =========================================================================
+
+      const FLOWER_CATALOG = [
+        {
+          id: 'peony',
+          name: 'Blush Peony',
+          meaning: 'Romance & bashful charm',
+          badgeColor: '#FADADD',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <!-- Outer Ruffled Petals -->
+              <circle cx="0" cy="0" r="36" fill="#F9C5D5" stroke="#D4728C" stroke-width="1.4"/>
+              <path d="M-32,-12 C-42,-32 -12,-44 0,-30 C12,-44 42,-32 32,-12 C46,4 32,34 12,28 C6,44 -14,42 -16,26 C-36,32 -44,6 -32,-12 Z" fill="#FADADD" stroke="#D4728C" stroke-width="1.3"/>
+              <!-- Mid Layered Petals -->
+              <path d="M-22,-8 C-28,-24 -8,-32 0,-20 C8,-32 28,-24 22,-8 C32,4 22,24 8,20 C2,30 -10,28 -12,18 C-26,22 -30,4 -22,-8 Z" fill="#F4A7B9" stroke="#C85A77" stroke-width="1.2"/>
+              <!-- Inner Cupped Petals -->
+              <circle cx="0" cy="0" r="14" fill="#E8859E" stroke="#B54E69" stroke-width="1.1"/>
+              <path d="M-9,-3 C-10,-12 10,-12 9,-3 C12,6 -12,6 -9,-3 Z" fill="#F9C5D5" stroke="#B54E69" stroke-width="1"/>
+              <!-- Golden Stamen Center -->
+              <circle cx="0" cy="0" r="4.5" fill="#FBE29D" stroke="#D49B35" stroke-width="1"/>
+              <circle cx="-3" cy="-2" r="1.2" fill="#FFFDF9"/>
+              <circle cx="3" cy="2" r="1.2" fill="#FFFDF9"/>
+            </g>
+          `
+        },
+        {
+          id: 'rose',
+          name: 'Coquette Rose',
+          meaning: 'Deep devotion & grace',
+          badgeColor: '#F4C2C2',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <!-- Small Side Rose Leaves -->
+              <path d="M-24,18 Q-38,14 -34,26 Q-24,28 -18,22 Z" fill="#8FB38B" stroke="#5E825A" stroke-width="1"/>
+              <path d="M24,18 Q38,14 34,26 Q24,28 18,22 Z" fill="#8FB38B" stroke="#5E825A" stroke-width="1"/>
+              <!-- Outer Rose Petals -->
+              <path d="M0,-33 C20,-33 34,-18 32,2 C30,22 16,32 0,32 C-16,32 -30,22 -32,2 C-34,-18 -20,-33 0,-33 Z" fill="#E67A94" stroke="#A83E59" stroke-width="1.4"/>
+              <path d="M-26,-10 C-30,-26 -6,-32 0,-22 C6,-32 30,-26 26,-10 C32,8 18,26 0,24 C-18,26 -32,8 -26,-10 Z" fill="#F29CB1" stroke="#A83E59" stroke-width="1.2"/>
+              <!-- Spiral Rose Swirl -->
+              <path d="M-16,-4 C-18,-18 14,-20 16,-4 C18,12 -12,16 -12,0 C-12,-10 8,-10 8,0 C8,6 -4,6 -3,-1" fill="none" stroke="#9C3550" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="1" cy="-1" r="4" fill="#D45B79"/>
+            </g>
+          `
+        },
+        {
+          id: 'tulip',
+          name: 'French Tulip',
+          meaning: 'Pure & dreamy affection',
+          badgeColor: '#FFE4EC',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <!-- Side Petals -->
+              <path d="M-22,6 C-26,-16 -12,-32 -4,-28 C0,-12 -4,16 -14,24 Z" fill="#F7B5C8" stroke="#C85A77" stroke-width="1.3"/>
+              <path d="M22,6 C26,-16 12,-32 4,-28 C0,-12 4,16 14,24 Z" fill="#F7B5C8" stroke="#C85A77" stroke-width="1.3"/>
+              <!-- Center Cup Petal -->
+              <path d="M-15,12 C-16,-14 -6,-34 0,-34 C6,-34 16,-14 15,12 C14,24 -14,24 -15,12 Z" fill="#FADADD" stroke="#C85A77" stroke-width="1.4"/>
+              <path d="M0,-33 L0,20" stroke="#E89EB0" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+          `
+        },
+        {
+          id: 'ranunculus',
+          name: 'Buttercup Ranunculus',
+          meaning: 'Radiant charm & allure',
+          badgeColor: '#FFF1D6',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <circle cx="0" cy="0" r="31" fill="#FDE4CF" stroke="#D98B6C" stroke-width="1.3"/>
+              <circle cx="0" cy="0" r="24" fill="#FBC4AB" stroke="#D98B6C" stroke-width="1.1"/>
+              <circle cx="0" cy="0" r="17" fill="#F8AD9D" stroke="#C46D53" stroke-width="1.1"/>
+              <circle cx="0" cy="0" r="11" fill="#F4978E" stroke="#B55645" stroke-width="1.1"/>
+              <circle cx="0" cy="0" r="5" fill="#9FB88C" stroke="#5E825A" stroke-width="1"/>
+            </g>
+          `
+        },
+        {
+          id: 'babysbreath',
+          name: "Baby's Breath",
+          meaning: 'Everlasting innocence',
+          badgeColor: '#FFFDF9',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <!-- Delicate Branching Stems -->
+              <path d="M0,26 L0,-18 M0,8 L-18,-10 M0,4 L18,-12 M-10,-2 L-22,4 M10,-4 L22,2" stroke="#8FB38B" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Tiny Pearl-White Blossoms -->
+              ${[
+                [0, -20], [-18, -11], [18, -13], [-22, 4], [22, 2],
+                [-9, -16], [10, -17], [-11, 2], [11, 1], [0, -6]
+              ].map(([cx, cy]) => `
+                <g transform="translate(${cx},${cy})">
+                  <circle cx="0" cy="0" r="5.5" fill="#FFFDF9" stroke="#E89EB0" stroke-width="1"/>
+                  <circle cx="0" cy="0" r="1.8" fill="#F9D56E"/>
+                </g>
+              `).join('')}
+            </g>
+          `
+        },
+        {
+          id: 'lilyofthevalley',
+          name: 'Lily of the Valley',
+          meaning: 'Return of sweet happiness',
+          badgeColor: '#EBF5EB',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <!-- Arching Stem & Leaf -->
+              <path d="M-8,28 C-14,4 -4,-22 18,-26" fill="none" stroke="#6E946A" stroke-width="2" stroke-linecap="round"/>
+              <path d="M-10,26 C-26,12 -24,-14 -8,-20 C-14,-4 -12,12 -10,26 Z" fill="#98BA94" stroke="#6E946A" stroke-width="1"/>
+              <!-- Dainty Hanging Bell Blooms -->
+              ${[
+                [14, -22], [4, -14], [-3, -3], [-6, 9]
+              ].map(([bx, by]) => `
+                <g transform="translate(${bx},${by})">
+                  <path d="M-6,0 C-6,-7 6,-7 6,0 L7,6 Q3,4 0,6 Q-3,4 -7,6 Z" fill="#FFFDF9" stroke="#D49AA9" stroke-width="1.1"/>
+                </g>
+              `).join('')}
+            </g>
+          `
+        },
+        {
+          id: 'daisy',
+          name: 'Sweetheart Daisy',
+          meaning: 'Playful & loyal heart',
+          badgeColor: '#FFF8E7',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              ${Array.from({ length: 12 }).map((_, i) => `
+                <ellipse cx="0" cy="-18" rx="5.5" ry="13" fill="#FFFDF9" stroke="#E8B4C2" stroke-width="1.1" transform="rotate(${i * 30})"/>
+              `).join('')}
+              <circle cx="0" cy="0" r="9.5" fill="#F9D56E" stroke="#D99B26" stroke-width="1.2"/>
+              <circle cx="-2.5" cy="-2.5" r="2" fill="#FFF6D6"/>
+            </g>
+          `
+        },
+        {
+          id: 'forgetmenot',
+          name: 'Forget-Me-Not',
+          meaning: 'True & faithful remembrance',
+          badgeColor: '#E3F0FF',
+          renderSVG: (scale = 1) => `
+            <g transform="scale(${scale})">
+              <!-- Cluster of 3 Sky-Blue 5-Petal Florets -->
+              ${[
+                [-11, -8, 0.95], [12, -6, 0.9], [0, 11, 1]
+              ].map(([fx, fy, sc]) => `
+                <g transform="translate(${fx},${fy}) scale(${sc})">
+                  ${[0, 72, 144, 216, 288].map(deg => `
+                    <circle cx="0" cy="-7" r="5.5" fill="#BBD8F7" stroke="#6E99C9" stroke-width="1" transform="rotate(${deg})"/>
+                  `).join('')}
+                  <circle cx="0" cy="0" r="4" fill="#FFF3B0" stroke="#D4A438" stroke-width="0.9"/>
+                </g>
+              `).join('')}
+            </g>
+          `
+        }
+      ];
+
+      const RIBBON_OPTIONS = [
+        {
+          id: 'satin-pink',
+          name: 'Satin Baby Pink',
+          desc: 'Classic coquette silk bow',
+          fillMain: '#FADADD',
+          fillFold: '#F4C2C2',
+          stroke: '#C85A77',
+          pearlTrim: false
+        },
+        {
+          id: 'velvet-burgundy',
+          name: 'Velvet Roseberry',
+          desc: 'Rich romantic crimson bow',
+          fillMain: '#B54E69',
+          fillFold: '#8E354D',
+          stroke: '#5C1B2D',
+          pearlTrim: false
+        },
+        {
+          id: 'pearl-blush',
+          name: 'Pearl-Trimmed Blush',
+          desc: 'Lustrous pearls & silk',
+          fillMain: '#F8D1DC',
+          fillFold: '#EAAEC0',
+          stroke: '#B54E69',
+          pearlTrim: true
+        },
+        {
+          id: 'ivory-lace',
+          name: 'Cream Bridal Lace',
+          desc: 'Delicate vintage ivory',
+          fillMain: '#FFFDF9',
+          fillFold: '#F3E7E2',
+          stroke: '#C99696',
+          pearlTrim: true
+        }
+      ];
+
+      const WRAPPER_OPTIONS = [
+        {
+          id: 'blush-kraft',
+          name: 'Blush Silk Paper',
+          fill: 'url(#grad-kraft)',
+          stroke: '#D49AA9'
+        },
+        {
+          id: 'pink-gingham',
+          name: 'Coquette Gingham',
+          fill: 'url(#pattern-gingham)',
+          stroke: '#E89EB0'
+        },
+        {
+          id: 'vintage-lace',
+          name: 'Chantilly Lace',
+          fill: 'url(#pattern-lace)',
+          stroke: '#D9B8C0'
+        },
+        {
+          id: 'love-newsprint',
+          name: 'Parisian Gazette',
+          fill: 'url(#pattern-newsprint)',
+          stroke: '#BFA996'
+        }
+      ];
+
+      const SPOTIFY_PRESETS = [
+        {
+          id: '1dGr1c8CrMLDpV6mPbImSI',
+          title: 'Lover',
+          artist: 'Taylor Swift',
+          vibe: 'Timeless Romantic'
+        },
+        {
+          id: '2i2gDpKKWjvnRTOZRhaPh2',
+          title: 'Moonlight',
+          artist: 'Kali Uchis',
+          vibe: 'Dreamy & Ethereal'
+        },
+        {
+          id: '6G9YlbU3ByPJQvOFDRdwyM',
+          title: 'Glue Song',
+          artist: 'beabadoobee',
+          vibe: 'Sweet & Soft'
+        },
+        {
+          id: '6Qyc6fS4DsZjB2mRW9DsQs',
+          title: 'Say Yes To Heaven',
+          artist: 'Lana Del Rey',
+          vibe: 'Coquette Classic'
+        },
+        {
+          id: '7k6IIdyIVN3P2B8n4wK2tN',
+          title: 'From The Start',
+          artist: 'Laufey',
+          vibe: 'Vintage Bossa'
+        }
+      ];
+
+      const LOVE_NOTE_INSPIRATIONS = [
+        "Every petal in this bouquet reminds me of your grace and warmth. Wishing you a day as lovely and enchanting as you are.",
+        "If I had a flower for every time you made my heart flutter, I could walk through an endless garden forever. ♡",
+        "Tied with silk ribbons and sweet melodies—here is a little bouquet that will never fade, just like my adoration for you.",
+        "You are poetry in bloom. Thank you for filling my days with softness, laughter, and magic."
+      ];
+
+      // =========================================================================
+      // 2. STATE & URL PARSING FOR SHAREABLE LINKS
+      // =========================================================================
+      const MAX_BLOOMS = 15;
+      const DEFAULT_PHOTO = "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=500&q=80";
+
+      const BOUQUET_SLOTS = [
+        { x: 230, y: 215, rot: 0, scale: 1.12 },
+        { x: 182, y: 205, rot: -14, scale: 1.04 },
+        { x: 278, y: 205, rot: 14, scale: 1.04 },
+        { x: 205, y: 165, rot: -8, scale: 0.98 },
+        { x: 255, y: 165, rot: 8, scale: 0.98 },
+        { x: 152, y: 242, rot: -22, scale: 1.02 },
+        { x: 308, y: 242, rot: 22, scale: 1.02 },
+        { x: 230, y: 262, rot: 4, scale: 1.06 },
+        { x: 188, y: 255, rot: -12, scale: 1.0 },
+        { x: 272, y: 255, rot: 12, scale: 1.0 },
+        { x: 145, y: 192, rot: -25, scale: 0.92 },
+        { x: 315, y: 192, rot: 25, scale: 0.92 },
+        { x: 230, y: 132, rot: 0, scale: 0.9 },
+        { x: 175, y: 140, rot: -16, scale: 0.88 },
+        { x: 285, y: 140, rot: 16, scale: 0.88 },
+      ];
+
+      const state = {
+        blooms: ['peony', 'rose', 'tulip', 'babysbreath', 'peony', 'ranunculus', 'daisy'],
+        slotOrder: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+        ribbonId: 'satin-pink',
+        wrapperId: 'blush-kraft',
+        photoSrc: DEFAULT_PHOTO,
+        polaroidCaption: 'forever & always ♡',
+        toName: 'My Sweetest Love',
+        fromName: 'Your Secret Admirer',
+        loveNote: LOVE_NOTE_INSPIRATIONS[0],
+        spotifyTrackId: SPOTIFY_PRESETS[0].id,
+        activeTab: 'flowers',
+        keepsakeMode: false,
+        noteInspireIndex: 0
+      };
+
+      // Load State from URL Query Parameters if shared
+      function loadStateFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('to') || params.has('blooms') || params.has('msg')) {
+          const bloomsParam = params.get('blooms');
+          if (bloomsParam) {
+            const parsedBlooms = bloomsParam.split(',').filter(id => FLOWER_CATALOG.some(f => f.id === id));
+            if (parsedBlooms.length > 0) state.blooms = parsedBlooms;
+          }
+          if (params.get('ribbon')) state.ribbonId = params.get('ribbon');
+          if (params.get('wrapper')) state.wrapperId = params.get('wrapper');
+          if (params.get('to')) state.toName = params.get('to');
+          if (params.get('from')) state.fromName = params.get('from');
+          if (params.get('msg')) state.loveNote = params.get('msg');
+          if (params.get('cap')) state.polaroidCaption = params.get('cap');
+          if (params.get('song')) state.spotifyTrackId = params.get('song');
+          if (params.get('photo')) state.photoSrc = params.get('photo');
+
+          // Populate input fields with loaded state
+          setTimeout(() => {
+            document.getElementById('input-to-name').value = state.toName;
+            document.getElementById('input-from-name').value = state.fromName;
+            document.getElementById('input-love-note').value = state.loveNote;
+            document.getElementById('input-polaroid-caption').value = state.polaroidCaption;
+            dom.cardToDisplay.textContent = state.toName;
+            dom.cardFromDisplay.textContent = state.fromName;
+            dom.cardMessageDisplay.textContent = state.loveNote;
+            dom.polaroidCaptionDisplay.textContent = state.polaroidCaption;
+            dom.polaroidImg.src = state.photoSrc;
+            setSpotifyTrack(state.spotifyTrackId);
+            buildSpotifyPresets();
+            // Automatically enter keepsake mode when opening a shared link!
+            setKeepsakeMode(true);
+            showToast('Loaded shared shaboquette bouquet!', '🎀');
+          }, 100);
+        }
+      }
+
+      // Generate Shareable URL
+      function generateShareURL() {
+        const url = new URL(window.location.origin + window.location.pathname);
+        url.searchParams.set('blooms', state.blooms.join(','));
+        url.searchParams.set('ribbon', state.ribbonId);
+        url.searchParams.set('wrapper', state.wrapperId);
+        url.searchParams.set('to', state.toName);
+        url.searchParams.set('from', state.fromName);
+        url.searchParams.set('msg', state.loveNote);
+        url.searchParams.set('cap', state.polaroidCaption);
+        url.searchParams.set('song', state.spotifyTrackId);
+        // If photo is standard or data URL, include it if reasonable length
+        if (state.photoSrc && !state.photoSrc.startsWith('data:image/svg')) {
+          url.searchParams.set('photo', state.photoSrc);
+        }
+        return url.toString();
+      }
+
+      // =========================================================================
+      // 3. DOM REFERENCES
+      // =========================================================================
+      const dom = {
+        bloomsLayer: document.getElementById('blooms-layer'),
+        ribbonLayer: document.getElementById('ribbon-layer'),
+        bloomCounter: document.getElementById('bloom-counter'),
+        stemLimitLabel: document.getElementById('stem-limit-label'),
+        emptyBouquetMsg: document.getElementById('empty-bouquet-msg'),
+        flowerPaletteGrid: document.getElementById('flower-palette-grid'),
+        activeBloomsChips: document.getElementById('active-blooms-chips'),
+        ribbonOptionsGrid: document.getElementById('ribbon-options-grid'),
+        wrapperOptionsGrid: document.getElementById('wrapper-options-grid'),
+        spotifyPresetsList: document.getElementById('spotify-presets-list'),
+        spotifyIframe: document.getElementById('spotify-iframe'),
+        polaroidImg: document.getElementById('polaroid-img'),
+        polaroidCaptionDisplay: document.getElementById('polaroid-caption-display'),
+        cardToDisplay: document.getElementById('card-to-display'),
+        cardFromDisplay: document.getElementById('card-from-display'),
+        cardMessageDisplay: document.getElementById('card-message-display'),
+        toastBox: document.getElementById('toast-box'),
+        toastIcon: document.getElementById('toast-icon'),
+        toastText: document.getElementById('toast-text'),
+      };
+
+      let toastTimer = null;
+      function showToast(message, icon = '🎀') {
+        dom.toastIcon.textContent = icon;
+        dom.toastText.textContent = message;
+        dom.toastBox.classList.remove('opacity-0', 'translate-y-4');
+        dom.toastBox.classList.add('opacity-100', 'translate-y-0');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          dom.toastBox.classList.remove('opacity-100', 'translate-y-0');
+          dom.toastBox.classList.add('opacity-0', 'translate-y-4');
+        }, 2800);
+      }
+
+      // =========================================================================
+      // 4. RENDER FUNCTIONS
+      // =========================================================================
+
+      // Render Bouquet Blooms on SVG Canvas
+      function renderBouquetBlooms() {
+        const count = state.blooms.length;
+        dom.bloomCounter.textContent = `${count} ${count === 1 ? 'bloom' : 'blooms'}`;
+        dom.stemLimitLabel.textContent = `${count} / ${MAX_BLOOMS}`;
+
+        if (count === 0) {
+          dom.bloomsLayer.innerHTML = '';
+          dom.emptyBouquetMsg.classList.remove('hidden');
+          renderActiveBloomChips();
+          return;
+        }
+        dom.emptyBouquetMsg.classList.add('hidden');
+
+        // Pair each bloom with its assigned slot, then sort by Y so lower flowers overlap upper ones naturally
+        const positioned = state.blooms.map((flowerId, idx) => {
+          const slotIdx = state.slotOrder[idx % BOUQUET_SLOTS.length];
+          const slot = BOUQUET_SLOTS[slotIdx];
+          const flower = FLOWER_CATALOG.find(f => f.id === flowerId) || FLOWER_CATALOG[0];
+          return { flower, slot, idx };
+        });
+
+        positioned.sort((a, b) => a.slot.y - b.slot.y);
+
+        dom.bloomsLayer.innerHTML = positioned.map(({ flower, slot, idx }) => `
+          <g transform="translate(${slot.x}, ${slot.y}) rotate(${slot.rot})" class="cursor-pointer transition-transform hover:opacity-95" data-remove-idx="${idx}">
+            <title>${flower.name} (Click to remove)</title>
+            ${flower.renderSVG(slot.scale)}
+          </g>
+        `).join('');
+
+        // Allow clicking a flower directly on the bouquet to remove it
+        dom.bloomsLayer.querySelectorAll('[data-remove-idx]').forEach(el => {
+          el.addEventListener('click', () => {
+            const idx = parseInt(el.getAttribute('data-remove-idx'), 10);
+            removeBloomAt(idx);
+          });
+        });
+
+        renderActiveBloomChips();
+      }
+
+      // Render Active Stems Pill List in Studio
+      function renderActiveBloomChips() {
+        if (state.blooms.length === 0) {
+          dom.activeBloomsChips.innerHTML = `<span class="text-xs italic text-blush-400">No blooms added yet</span>`;
+          return;
+        }
+
+        dom.activeBloomsChips.innerHTML = state.blooms.map((flowerId, idx) => {
+          const flower = FLOWER_CATALOG.find(f => f.id === flowerId);
+          return `
+            <button type="button" data-chip-idx="${idx}" title="Remove ${flower.name}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-blush-100 hover:bg-blush-200 text-blush-700 border border-blush-300 transition">
+              <span>${flower.name}</span>
+              <span class="text-blush-500 font-bold">×</span>
+            </button>
+          `;
+        }).join('');
+
+        dom.activeBloomsChips.querySelectorAll('[data-chip-idx]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-chip-idx'), 10);
+            removeBloomAt(idx);
+          });
+        });
+      }
+
+      // Render Coquette Silk Ribbon & Bow on SVG Canvas
+      function renderRibbon() {
+        const ribbon = RIBBON_OPTIONS.find(r => r.id === state.ribbonId) || RIBBON_OPTIONS[0];
+
+        const pearlBeadsSVG = ribbon.pearlTrim ? `
+          <!-- Draped Pearl String Accent -->
+          <g fill="#FFFDF9" stroke="#D9B8C0" stroke-width="0.8">
+            <circle cx="195" cy="366" r="3.2"/>
+            <circle cx="204" cy="374" r="3.5"/>
+            <circle cx="215" cy="380" r="3.8"/>
+            <circle cx="228" cy="382" r="4"/>
+            <circle cx="241" cy="380" r="3.8"/>
+            <circle cx="252" cy="374" r="3.5"/>
+            <circle cx="261" cy="366" r="3.2"/>
+          </g>
+        ` : '';
+
+        dom.ribbonLayer.innerHTML = `
+          <!-- Waist Ribbon Band -->
+          <path d="M188 354 Q230 370 272 354 L268 370 Q230 385 192 370 Z" fill="${ribbon.fillFold}" stroke="${ribbon.stroke}" stroke-width="1.5"/>
+
+          ${pearlBeadsSVG}
+
+          <!-- Long Flowing Silk Tails -->
+          <path d="M225 368 C210 405 182 445 162 478 L178 472 L185 486 C202 452 220 412 230 374 Z" fill="${ribbon.fillMain}" stroke="${ribbon.stroke}" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M235 368 C250 405 278 445 298 478 L282 472 L275 486 C258 452 240 412 230 374 Z" fill="${ribbon.fillMain}" stroke="${ribbon.stroke}" stroke-width="1.5" stroke-linejoin="round"/>
+
+          <!-- Left Bow Loop -->
+          <path d="M226 364 C194 328 148 332 154 364 C160 392 204 380 226 368 Z" fill="${ribbon.fillMain}" stroke="${ribbon.stroke}" stroke-width="1.6"/>
+          <path d="M222 365 C198 346 172 350 174 363 C176 374 202 370 222 366 Z" fill="${ribbon.fillFold}" opacity="0.65"/>
+
+          <!-- Right Bow Loop -->
+          <path d="M234 364 C266 328 312 332 306 364 C300 392 256 380 234 368 Z" fill="${ribbon.fillMain}" stroke="${ribbon.stroke}" stroke-width="1.6"/>
+          <path d="M238 365 C262 346 288 350 286 363 C284 374 258 370 238 366 Z" fill="${ribbon.fillFold}" opacity="0.65"/>
+
+          <!-- Center Silk Knot -->
+          <rect x="220" y="354" width="20" height="20" rx="7" fill="${ribbon.fillFold}" stroke="${ribbon.stroke}" stroke-width="1.6"/>
+          ${ribbon.pearlTrim ? `<circle cx="230" cy="364" r="4.5" fill="#FFFDF9" stroke="#C99696" stroke-width="1.2"/>` : ''}
+        `;
+      }
+
+      // Apply Wrapper Paper Style to SVG
+      function renderWrapper() {
+        const wrapper = WRAPPER_OPTIONS.find(w => w.id === state.wrapperId) || WRAPPER_OPTIONS[0];
+        const parts = [
+          'wrap-back-left',
+          'wrap-back-right',
+          'wrap-back-center',
+          'wrap-front-left',
+          'wrap-front-right',
+          'wrap-front-cone'
+        ];
+        parts.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.setAttribute('fill', wrapper.fill);
+            el.setAttribute('stroke', wrapper.stroke);
+          }
+        });
+      }
+
+      // Build Studio Palettes
+      function buildFlowerPalette() {
+        dom.flowerPaletteGrid.innerHTML = FLOWER_CATALOG.map(flower => `
+          <button type="button" data-add-flower="${flower.id}" class="group flex items-center gap-2.5 p-2.5 rounded-2xl bg-cream hover:bg-blush-100/90 border border-blush-200 hover:border-blush-400 text-left transition shadow-sm active:scale-[0.98]">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-blush-200/80" style="background-color: ${flower.badgeColor};">
+              <svg viewBox="-42 -42 84 84" class="w-10 h-10 group-hover:scale-110 transition-transform">
+                ${flower.renderSVG(1)}
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-serif font-semibold text-sm text-blush-800 truncate">${flower.name}</p>
+              <p class="text-[11px] text-blush-500 leading-tight line-clamp-2">${flower.meaning}</p>
+            </div>
+          </button>
+        `).join('');
+
+        dom.flowerPaletteGrid.querySelectorAll('[data-add-flower]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const flowerId = btn.getAttribute('data-add-flower');
+            addBloom(flowerId);
+          });
+        });
+      }
+
+      function buildRibbonOptions() {
+        dom.ribbonOptionsGrid.innerHTML = RIBBON_OPTIONS.map(ribbon => {
+          const isSelected = ribbon.id === state.ribbonId;
+          return `
+            <button type="button" data-select-ribbon="${ribbon.id}" class="p-3 rounded-2xl border text-left transition flex items-center gap-2.5 ${
+              isSelected
+                ? 'bg-blush-100 border-blush-500 ring-2 ring-blush-300'
+                : 'bg-cream border-blush-200 hover:bg-blush-100/60'
+            }">
+              <span class="w-7 h-7 rounded-full shrink-0 border shadow-inner flex items-center justify-center text-xs" style="background-color: ${ribbon.fillMain}; border-color: ${ribbon.stroke};">
+                ${ribbon.pearlTrim ? '🤍' : '୨୧'}
+              </span>
+              <div class="min-w-0">
+                <p class="font-serif font-semibold text-sm text-blush-800 truncate">${ribbon.name}</p>
+                <p class="text-[11px] text-blush-500 truncate">${ribbon.desc}</p>
+              </div>
+            </button>
+          `;
+        }).join('');
+
+        dom.ribbonOptionsGrid.querySelectorAll('[data-select-ribbon]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            state.ribbonId = btn.getAttribute('data-select-ribbon');
+            renderRibbon();
+            buildRibbonOptions();
+            showToast('Silk ribbon tied!', '🎀');
+          });
+        });
+      }
+
+      function buildWrapperOptions() {
+        dom.wrapperOptionsGrid.innerHTML = WRAPPER_OPTIONS.map(wrap => {
+          const isSelected = wrap.id === state.wrapperId;
+          return `
+            <button type="button" data-select-wrapper="${wrap.id}" class="p-3 rounded-2xl border text-left transition ${
+              isSelected
+                ? 'bg-blush-100 border-blush-500 ring-2 ring-blush-300'
+                : 'bg-cream border-blush-200 hover:bg-blush-100/60'
+            }">
+              <p class="font-serif font-semibold text-sm text-blush-800">${wrap.name}</p>
+              <p class="text-[11px] text-blush-500 mt-0.5">Tap to wrap</p>
+            </button>
+          `;
+        }).join('');
+
+        dom.wrapperOptionsGrid.querySelectorAll('[data-select-wrapper]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            state.wrapperId = btn.getAttribute('data-select-wrapper');
+            renderWrapper();
+            buildWrapperOptions();
+            showToast(`Wrapped in ${WRAPPER_OPTIONS.find(w => w.id === state.wrapperId).name}`, '📜');
+          });
+        });
+      }
+
+      function buildSpotifyPresets() {
+        dom.spotifyPresetsList.innerHTML = SPOTIFY_PRESETS.map(song => {
+          const isSelected = song.id === state.spotifyTrackId;
+          return `
+            <button type="button" data-spotify-id="${song.id}" class="w-full p-2.5 rounded-2xl border text-left transition flex items-center justify-between gap-2 ${
+              isSelected
+                ? 'bg-blush-100 border-blush-500 shadow-sm'
+                : 'bg-cream border-blush-200 hover:bg-blush-100/60'
+            }">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="w-8 h-8 rounded-full bg-blush-200 text-blush-700 flex items-center justify-center text-xs shrink-0">
+                  ${isSelected ? '♫' : '▶'}
+                </span>
+                <div class="min-w-0">
+                  <p class="font-serif font-semibold text-sm text-blush-800 truncate">${song.title}</p>
+                  <p class="text-[11px] text-blush-500 truncate">${song.artist}</p>
+                </div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-blush-50 border border-blush-200 text-blush-600 shrink-0">
+                ${song.vibe}
+              </span>
+            </button>
+          `;
+        }).join('');
+
+        dom.spotifyPresetsList.querySelectorAll('[data-spotify-id]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const trackId = btn.getAttribute('data-spotify-id');
+            setSpotifyTrack(trackId);
+            buildSpotifyPresets();
+          });
+        });
+      }
+
+      // =========================================================================
+      // 5. INTERACTIVE ACTIONS
+      // =========================================================================
+
+      function addBloom(flowerId) {
+        if (state.blooms.length >= MAX_BLOOMS) {
+          showToast(`Maximum ${MAX_BLOOMS} blooms reached for this bouquet`, '🌸');
+          return;
+        }
+        state.blooms.push(flowerId);
+        renderBouquetBlooms();
+        const flower = FLOWER_CATALOG.find(f => f.id === flowerId);
+        showToast(`Added ${flower.name}`, '🌷');
+      }
+
+      function removeBloomAt(idx) {
+        if (idx >= 0 && idx < state.blooms.length) {
+          state.blooms.splice(idx, 1);
+          renderBouquetBlooms();
+        }
+      }
+
+      function shuffleArrangement() {
+        if (state.blooms.length < 2) {
+          showToast('Add at least 2 blooms to shuffle arrangement', '✨');
+          return;
+        }
+        for (let i = state.slotOrder.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [state.slotOrder[i], state.slotOrder[j]] = [state.slotOrder[j], state.slotOrder[i]];
+        }
+        renderBouquetBlooms();
+        showToast('Blooms rearranged!', '✨');
+      }
+
+      function parseSpotifyTrackId(urlOrUri) {
+        if (!urlOrUri) return null;
+        const trimmed = urlOrUri.trim();
+        const urlMatch = trimmed.match(/spotify\.com\/(?:intl-[a-z]+\/)?track\/([a-zA-Z0-9]{22})/);
+        if (urlMatch && urlMatch[1]) return urlMatch[1];
+        const uriMatch = trimmed.match(/spotify:track:([a-zA-Z0-9]{22})/);
+        if (uriMatch && uriMatch[1]) return uriMatch[1];
+        if (/^[a-zA-Z0-9]{22}$/.test(trimmed)) return trimmed;
+        return null;
+      }
+
+      function setSpotifyTrack(trackId) {
+        state.spotifyTrackId = trackId;
+        dom.spotifyIframe.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
+        showToast('Spotify serenade updated!', '🎶');
+      }
+
+      function switchTab(tabName) {
+        state.activeTab = tabName;
+        document.querySelectorAll('.studio-tab').forEach(btn => {
+          const isTarget = btn.getAttribute('data-tab') === tabName;
+          if (isTarget) {
+            btn.classList.add('bg-blush-500', 'text-cream', 'shadow-sm');
+            btn.classList.remove('text-blush-700', 'hover:bg-blush-100');
+          } else {
+            btn.classList.remove('bg-blush-500', 'text-cream', 'shadow-sm');
+            btn.classList.add('text-blush-700', 'hover:bg-blush-100');
+          }
+        });
+
+        document.querySelectorAll('.studio-panel').forEach(panel => {
+          panel.classList.add('hidden');
+        });
+        const targetPanel = document.getElementById(`panel-${tabName}`);
+        if (targetPanel) targetPanel.classList.remove('hidden');
+      }
+
+      function setKeepsakeMode(enabled) {
+        state.keepsakeMode = enabled;
+        const studioCol = document.getElementById('studio-controls-column');
+        const stageCol = document.getElementById('stage-column');
+        const quickControls = document.getElementById('stage-quick-controls');
+        const keepsakeFooter = document.getElementById('keepsake-footer-bar');
+        const btnLabel = document.getElementById('keepsake-btn-label');
+        const btnIcon = document.getElementById('keepsake-btn-icon');
+        const btnStart = document.getElementById('btn-start-creating');
+
+        if (enabled) {
+          studioCol.classList.add('hidden');
+          stageCol.classList.remove('lg:col-span-7');
+          stageCol.classList.add('lg:col-span-8', 'lg:col-start-3');
+          quickControls.classList.add('hidden');
+          keepsakeFooter.classList.remove('hidden');
+          btnStart.classList.add('hidden');
+          btnIcon.textContent = '✎';
+          btnLabel.textContent = 'Back to Studio Editor';
+          showToast('Bouquet wrapped & presented!', '🎀');
+        } else {
+          studioCol.classList.remove('hidden');
+          stageCol.classList.add('lg:col-span-7');
+          stageCol.classList.remove('lg:col-span-8', 'lg:col-start-3');
+          quickControls.classList.remove('hidden');
+          keepsakeFooter.classList.add('hidden');
+          btnStart.classList.remove('hidden');
+          btnIcon.textContent = '🎀';
+          btnLabel.textContent = 'Wrap & Present Bouquet';
+        }
+      }
+
+      function copyShareableLink() {
+        const shareUrl = generateShareURL();
+        const textarea = document.createElement('textarea');
+        textarea.value = shareUrl;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast('Shareable link copied to clipboard! 🔗', '✨');
+        } catch (err) {
+          showToast('Unable to copy link automatically', '⚠️');
+        }
+        document.body.removeChild(textarea);
+      }
+
+      function copyKeepsakeSummary() {
+        const flowerNames = [...new Set(state.blooms.map(id => FLOWER_CATALOG.find(f => f.id === id)?.name))].join(', ');
+        const ribbonName = RIBBON_OPTIONS.find(r => r.id === state.ribbonId)?.name || 'Silk Ribbon';
+        const shareUrl = generateShareURL();
+
+        const summaryText = [
+          `୨୧ A Bespoke Bouquet from shaboquette ୨୧`,
+          `To: ${state.toName}`,
+          `From: ${state.fromName}`,
+          ``,
+          `"${state.loveNote}"`,
+          ``,
+          `🌸 Blooms: ${flowerNames || 'Wildflowers'}`,
+          `🎀 Ribbon: ${ribbonName}`,
+          `🔗 Open your bouquet here: ${shareUrl}`
+        ].join('\n');
+
+        const textarea = document.createElement('textarea');
+        textarea.value = summaryText;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast('Text summary copied to clipboard!', '💌');
+        } catch (err) {
+          showToast('Unable to copy automatically', '⚠️');
+        }
+        document.body.removeChild(textarea);
+      }
+
+      // =========================================================================
+      // 6. EVENT LISTENERS
+      // =========================================================================
+      function bindEvents() {
+        document.querySelectorAll('.studio-tab').forEach(btn => {
+          btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
+        });
+
+        document.getElementById('btn-next-step').addEventListener('click', () => {
+          const idx = TAB_ORDER.indexOf(state.activeTab);
+          const next = TAB_ORDER[(idx + 1) % TAB_ORDER.length];
+          switchTab(next);
+        });
+        document.getElementById('btn-prev-step').addEventListener('click', () => {
+          const idx = TAB_ORDER.indexOf(state.activeTab);
+          const prev = TAB_ORDER[(idx - 1 + TAB_ORDER.length) % TAB_ORDER.length];
+          switchTab(prev);
+        });
+
+        document.getElementById('btn-shuffle-bouquet').addEventListener('click', shuffleArrangement);
+        document.getElementById('btn-undo-bloom').addEventListener('click', () => {
+          if (state.blooms.length > 0) {
+            state.blooms.pop();
+            renderBouquetBlooms();
+          }
+        });
+        document.getElementById('btn-clear-bouquet').addEventListener('click', () => {
+          state.blooms = [];
+          renderBouquetBlooms();
+          showToast('Bouquet cleared', '🌿');
+        });
+
+        document.getElementById('photo-upload-input').addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            state.photoSrc = ev.target.result;
+            dom.polaroidImg.src = state.photoSrc;
+            showToast('Polaroid photo attached!', '📸');
+          };
+          reader.readAsDataURL(file);
+        });
+
+        document.getElementById('btn-reset-photo').addEventListener('click', () => {
+          state.photoSrc = DEFAULT_PHOTO;
+          dom.polaroidImg.src = DEFAULT_PHOTO;
+          document.getElementById('photo-upload-input').value = '';
+          showToast('Restored default photo', '🖼️');
+        });
+
+        document.getElementById('input-polaroid-caption').addEventListener('input', (e) => {
+          state.polaroidCaption = e.target.value || 'forever & always ♡';
+          dom.polaroidCaptionDisplay.textContent = state.polaroidCaption;
+        });
+
+        document.getElementById('input-to-name').addEventListener('input', (e) => {
+          state.toName = e.target.value || 'My Sweetest Love';
+          dom.cardToDisplay.textContent = state.toName;
+        });
+
+        document.getElementById('input-from-name').addEventListener('input', (e) => {
+          state.fromName = e.target.value || 'Your Secret Admirer';
+          dom.cardFromDisplay.textContent = state.fromName;
+        });
+
+        document.getElementById('input-love-note').addEventListener('input', (e) => {
+          state.loveNote = e.target.value;
+          dom.cardMessageDisplay.textContent = state.loveNote || '...';
+        });
+
+        document.getElementById('btn-inspire-note').addEventListener('click', () => {
+          state.noteInspireIndex = (state.noteInspireIndex + 1) % LOVE_NOTE_INSPIRATIONS.length;
+          const nextNote = LOVE_NOTE_INSPIRATIONS[state.noteInspireIndex];
+          state.loveNote = nextNote;
+          document.getElementById('input-love-note').value = nextNote;
+          dom.cardMessageDisplay.textContent = nextNote;
+          showToast('Added romantic note inspiration', '✒️');
+        });
+
+        document.getElementById('btn-load-spotify').addEventListener('click', () => {
+          const inputEl = document.getElementById('input-custom-spotify');
+          const trackId = parseSpotifyTrackId(inputEl.value);
+          if (!trackId) {
+            showToast('Please paste a valid Spotify track link', '⚠️');
+            return;
+          }
+          setSpotifyTrack(trackId);
+          buildSpotifyPresets();
+        });
+
+        document.getElementById('btn-toggle-keepsake').addEventListener('click', () => {
+          setKeepsakeMode(!state.keepsakeMode);
+        });
+        document.getElementById('btn-back-to-edit').addEventListener('click', () => {
+          setKeepsakeMode(false);
+        });
+        document.getElementById('btn-share-link').addEventListener('click', copyShareableLink);
+        document.getElementById('btn-copy-keepsake').addEventListener('click', copyKeepsakeSummary);
+      }
+
+      // =========================================================================
+      // 7. INITIALIZE APP
+      // =========================================================================
+      function init() {
+        buildFlowerPalette();
+        buildRibbonOptions();
+        buildWrapperOptions();
+        buildSpotifyPresets();
+        renderBouquetBlooms();
+        renderRibbon();
+        renderWrapper();
+        bindEvents();
+        loadStateFromURL();
+      }
+
+      window.addEventListener('DOMContentLoaded', init);
+    })();
+  </script>
+</body>
+</html>
